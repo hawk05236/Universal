@@ -1,0 +1,5 @@
+*NOTE*
+You do not need to import the js script into your website. You ARE required to import the html file. github says that this website is mostly html. But that is a lie.
+The html file has html, css, and javascript all packed into it. It's more like 40% html, 50% javascript, 50% css.
+
+that is all i had to say. -H
