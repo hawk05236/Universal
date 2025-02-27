@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal</title>
+    <link rel="icon" type="image/x-icon" href="https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh;
+            background: #000;
+            cursor: default; /* Ensure the cursor is always default */
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(270deg, rgba(0, 51, 102, 0.7), rgba(0, 0, 0, 0.8)),
+                url('https://images.unsplash.com/photo-1564115352739-7bb0f0771c62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDF8fGdhbGF4eXxlbnwwfHx8fDE2Nzk1NTM0OTE&ixlib=rb-1.2.1&q=80&w=1080')
+                no-repeat center center fixed;
+            filter: blur(5px);
+            z-index: -1;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #00BFFF;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            margin: 0;
+            animation: glow 1.5s ease infinite alternate;
+            color: #00BFFF; /* Default color */
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(0, 191, 255, 0); }
+            100% { text-shadow: 0 0 40px rgba(0, 191, 255, 1); }
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav button {
+            margin: 0 8px;
+            padding: 12px 30px;
+            background-color: black; /* Black background for all buttons */
+            color: #00BFFF; /* Default button text color */
+            border: 2px solid #00BFFF; /* Default border color */
+            border-radius: 30px;
+            cursor: default; /* Ensure default cursor */
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        nav button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.5);
+        }
+
+        #quote {
+            text-align: center;
+            font-size: 2rem;
+            margin: 50px 0;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            cursor: default; /* Ensure cursor is default for the quote */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .text-glow {
+            transition: text-shadow 0.5s;
+            color: #00BFFF; /* Default text color */
+        }
+
+        .text-glow:hover {
+            text-shadow: 0 0 20px rgba(0, 191, 255, 1);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: black; /* Black background for all buttons */
+            color: #00BFFF; /* Default button text color */
+            border: 2px solid #00BFFF; /* Default border color */
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: default; /* No pointer cursor */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, color 0.3s;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #00BFFF; /* Default section text color */
+            border-top: 1px solid #00BFFF; /* Default border color */
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: modalZoomIn 0.5s forwards;
+        }
+
+        @keyframes modalZoomIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        .modal-content {
+            background-color: #222;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #00BFFF; /* Default border color */
+            width: 80%;
+            color: #00BFFF; /* Default modal text color */
+            border-radius: 10px;
+            animation: modalContentFadeIn 0.5s forwards;
+        }
+
+        @keyframes modalContentFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: default; /* Cursor stays default */
+        }
+
+        .close:hover {
+            color: white;
+        }
+
+        /* Settings Modal */
+        .settings-modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: modalZoomIn 0.5s forwards;
+        }
+
+        .settings-modal-content {
+            background-color: #222;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #00BFFF; /* Default border color */
+            width: 80%;
+            color: #00BFFF; /* Default settings modal text color */
+            border-radius: 10px;
+            animation: modalContentFadeIn 0.5s forwards;
+        }
+
+        .settings-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: default; /* Cursor stays default */
+        }
+
+        .settings-close:hover {
+            color: white;
+        }
+
+        .settings-button {
+            padding: 10px;
+            margin: 10px;
+            background-color: black; /* Black background */
+            color: #00BFFF; /* Default settings button text color */
+            border: 2px solid #00BFFF; /* Default border color */
+            border-radius: 25px;
+            cursor: pointer; /* Pointer cursor */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .settings-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.8);
+        }
+
+        .theme-option {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #00BFFF; /* Default border color */
+            border-radius: 5px;
+            cursor: pointer; /* Pointer cursor */
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.05);
+            background-color: rgba(0, 191, 255, 0.3);
+        }
+
+        /* New styles for textbox */
+        #tabName {
+            border: 2px solid #00BFFF; /* Default border color */
+            background-color: black; /* Black background */
+            color: #00BFFF; /* Default input text color */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        #tabName:hover {
+            transform: scale(1.05);
+            /* Removed color change on hover */
+        }
+
+        #credits {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="text-glow">Universal</h1>
+    <nav>
+        <button class="text-glow" onclick="scrollToSection('home')">Home</button>
+        <button class="text-glow" onclick="scrollToSection('games')">Games</button>
+        <button class="text-glow" onclick="scrollToSection('proxys')">Proxys</button>
+        <button class="text-glow" onclick="scrollToSection('yap')">Yap Page</button>
+        <button class="text-glow" onclick="scrollToSection('credits')">Credits</button>
+    </nav>
+</header>
+
+<div id="quote" class="text-glow"></div>
+
+<div class="button-container" style="text-align: center;">
+    <button class="button" id="galaxyButton" onclick="location.href='https://blue-square.my.canva.site/'">Galaxy</button>
+    <button class="button" id="turkeyButton" onclick="window.open('https://turkeyisbackiguesswalmart.my.canva.site/')">Turkey</button>
+    <button class="button" id="alienButton" onclick="window.open('https://maxwellstevenson-mediafien-thosewhoknow.my.canva.site/alien')">Alien</button>
+    <button class="button" id="solamiButton" onclick="window.open('https://solami.my.canva.site/')">Solami</button>
+    <button class="button text-glow" id="importantButton" onclick="openModal()">Important</button>
+</div>
+
+<!-- Modal for Important Information -->
+<div id="importantModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>I recently found out how to download HTML5 Games, and import it into a website. I do it with replit, and github. I will make the github repository public, i can do it, im just having problems with github. But the game is working fine. When github starts working, i will covert it all into a website, and the HTML5 game is fnf is you were wondering. So i CAN make a fnf website, just takes some troubleshooting. -H</p>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+<div id="settingsModal" class="settings-modal">
+    <div class="settings-modal-content">
+        <span class="settings-close" onclick="closeSettingsModal()">×</span>
+        <h2 class="text-glow">Settings</h2>
+        <div id="general">
+            <h3 class="text-glow">General</h3>
+            <label for="tabName" class="text-glow">Tab Cloak: </label>
+            <input type="text" id="tabName" placeholder="Enter new tab name">
+            <button class="settings-button" id="applyButton">Apply</button>
+        </div>
+        <div id="themes">
+            <h3 class="text-glow">Themes <span style="font-size: 0.8rem; color: #aaa;">(Experimental, we are still working on this.)</span></h3>
+            <div class="theme-option" onclick="changeTheme('ruby')">Ruby</div>
+            <div class="theme-option" onclick="changeTheme('hacker')">Hacker</div>
+            <div class="theme-option" onclick="changeTheme('amoled')">Amoled</div>
+            <div class="theme-option" onclick="changeTheme('forestwhisper')">Forest Whisper</div>
+            <div class="theme-option" onclick="changeTheme('midnightshadow')">Midnight Shadow</div>
+            <div class="theme-option" onclick="changeTheme('deepsea')">Deep Sea</div>
+            <div class="theme-option" onclick="changeTheme('immortal')">Immortal</div>
+            <div class="theme-option" onclick="changeTheme('berrybliss')">Berry Bliss</div>
+            <div class="theme-option" onclick="changeTheme('original')">Original</div>
+        </div>
+        <div class="current-theme" id="settingsCurrentTheme">Current theme: Original</div>
+    </div>
+</div>
+
+<!-- Sections -->
+<div id="home" class="section">
+    <h2 class="text-glow">Welcome to Universal</h2>
+    <p class="text-glow">Click Q to open settings.</p>
+</div>
+
+<div id="games" class="section">
+    <h2 class="text-glow">Games (currently down, being fixed!)</h2>
+    <div class="button-container">
+        <button class="button glow" onclick="window.open('https://blankssite.w3spaces.com/cookie.html')">Cookie Clicker</button>
+        <button class="button glow" onclick="window.open('https://blankssite.w3spaces.com/Bit-life.html')">Bit Life</button>
+        <button class="button glow" onclick="window.open('https://blankssite.w3spaces.com/rooftop-snipers.html')">Rooftop Snipers</button>
+        <button class="button glow" onclick="window.open('https://blankssite.w3spaces.com/firewatergirlboy.html')">FBAWG</button>
+        <button class="button glow" onclick="window.open('https://blankssite.w3spaces.com/Learntofly.html')">Learn To Fly</button>
+    </div>
+</div>
+
+<div id="proxys" class="section">
+    <h2 class="text-glow">Proxys</h2>
+    <div class="button-container">
+        <button class="button glow" onclick="window.open('https://vocab.sage.garagepig.com/')">Utopia</button>
+        <button class="button glow" onclick="window.open('https://go-to-the.truckstore.ch/')">Svzy</button>
+        <button class="button glow" onclick="window.open('https://cdn.assets.math.localghost.org/index.html')">Svzy</button>
+        <button class="button glow" onclick="window.open('https://mathhelp.politechnika-nova.edu.pl/')">1346</button>
+        <button class="button glow" onclick="window.open('https://tesad12we.chickenkiller.com/')">UniUB</button>
+        <button class="button glow" onclick="window.open('https://qcactus.sigma.eubonia.com/')">Interstellar</button>
+        <button class="button glow" onclick="window.open('https://holdup.hervy.se/')">Ghost</button>
+    </div>
+</div>
+
+<div id="yap" class="section">
+    <h2 class="text-glow">Yap Page</h2>
+    <p class="text-glow">Here you can find various announcements and updates.</p>
+    <p class="text-glow">I added a couple of shorts to alien, that's all. -H</p>
+</div>
+
+<div id="credits" class="section">
+    <h2 class="text-glow">Credits</h2>
+    <p class="text-glow">Developers:</p>
+    <p class="text-glow">Bronomion - Main Dev</p>
+</div>
+
+<div id="particles-container"></div>
+
+<script>
+    // Enhanced Random Quote Array
+    const quotes = [
+        "Chat, is this website good? -H",
+        "Join turkey and galaxy. -H",
+        "Don't do drugs kids! -H",
+        "A wise old man once said, I want baby oil -H",
+        "Chat I don't know what to say -H",
+        "E(F) likes fentanyl -H",
+        "Chat, I'm about to crash out. -H",
+        "Are we better than shadow? -H",
+        "If you ever meet G, don't trust him. -H",
+        "Hey chat -G",
+        "Fun fact: it took months to make this😭🙏 -H",
+        "Universal is universally accepted. -H",
+        "First ever website titled: proxy channel, then blue-square, now.. this. Universal! -H",
+        "Special thanks to G(K) and E(F) :D -H",
+        "This is totally educational -H",
+        "\"I identify as a beta\" says biggest nerd of all time. -H",
+        "I hate fortnite. Fight me. -H",
+        "Chat, did you know that the earth, is actually, a planet? -H",
+        "Totally don't go to magnolia middle school as of this date, 2025 -H",
+        "Fun fact! This is a second link, and I can make many, many, many more. -H",
+        "Did you know that your mom is secretly a guy!? -H",
+        "Go touch grass -H",
+        "Fun fact! I made this website, and took all of its inspiration from shadows Sapphire theme, and UniUB! -H",
+        "I'm the main character -H",
+        "I'm bored so I added this as a quote. -H",
+        "Chat, E(F) said he is gonna take me hostage -H",
+        "G told me a old man was in the gym. I ignored him. Then... well. I WASN'T OLD ENOUGH -H",
+        "E(F) admitted he uses the tablet I gave him to watch, uhh, if you know, you know. -H",
+        "Thanks Canva for letting Galaxy be what it is!",
+        "Universal was only made with HTML, CSS, and JAVASCRIPT!",
+        "G hates dolphin, and dolphin said turkey sucks either though they use it -_- anyways I'm with G. -H",
+        "we are back! -H",
+        "QwErTy -H"
+    ];
+
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quote').innerText = quotes[randomIndex];
+    }
+    displayRandomQuote();
+
+    // Smooth Scrolling Function
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openModal() {
+        const modal = document.getElementById('importantModal');
+        modal.style.display = "block";  // Show the modal
+        modal.style.animation = "modalZoomIn 0.5s forwards";
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('importantModal');
+        modal.style.animation = "modalZoomOut 0.5s forwards";
+        modal.addEventListener('animationend', () => {
+            modal.style.display = "none";  // Hide the modal after zoom-out
+            modal.style.animation = "";    // Reset animation style for next opening
+        }, { once: true });  // Run this function only once
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function (event) {
+        const modal = document.getElementById('importantModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+
+    function openSettingsModal() {
+        const settingsModal = document.getElementById('settingsModal');
+        settingsModal.style.display = "block";
+        settingsModal.style.animation = "modalZoomIn 0.5s forwards";
+    }
+
+    function closeSettingsModal() {
+        const settingsModal = document.getElementById('settingsModal');
+        settingsModal.style.display = "none";  // Hide settings modal
+    }
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key.toLowerCase() === "q") {
+            openSettingsModal();
+        }
+    });
+
+    document.getElementById('applyButton').addEventListener('click', function () {
+        const newTabName = document.getElementById('tabName').value;
+        if (newTabName) {
+            document.title = newTabName;
+        }
+    });
+
+    function changeTheme(theme) {
+        let bodyBackgroundColor, textColor, buttonTextColor, borderColor, glowColor;
+
+        switch (theme) {
+            case 'ruby':
+                bodyBackgroundColor = '#4B0C0C';
+                textColor = '#8B0000'; // dark red
+                buttonTextColor = '#8B0000'; // dark red
+                borderColor = '#4B0C0C'; // dark red
+                glowColor = 'rgba(139, 0, 0, 1)'; // dark red glow
+                break;
+            case 'hacker':
+                bodyBackgroundColor = '#000';
+                textColor = '#00FF00'; // light green
+                buttonTextColor = '#00FF00'; // light green
+                borderColor = '#00FF00'; // light green
+                glowColor = 'rgba(0, 255, 0, 1)'; // light green glow
+                break;
+            case 'amoled':
+                bodyBackgroundColor = '#000';
+                textColor = '#fff'; // white
+                buttonTextColor = '#fff'; // white
+                borderColor = '#fff'; // white
+                glowColor = 'rgba(255, 255, 255, 1)'; // white glow
+                break;
+            case 'forestwhisper':
+                bodyBackgroundColor = '#228B22'; // dark green
+                textColor = '#228B22'; // dark green
+                buttonTextColor = '#228B22'; // dark green
+                borderColor = '#228B22'; // dark green
+                glowColor = 'rgba(255, 255, 255, 1)'; // white glow (to contrast)
+                break;
+            case 'midnightshadow':
+                bodyBackgroundColor = '#3c3c6b'; // purple background
+                textColor = '#3c3c6b'; // purple
+                buttonTextColor = '#3c3c6b'; // purple
+                borderColor = '#3c3c6b'; // purple
+                glowColor = 'rgba(255, 255, 255, 1)'; // white glow (for visibility)
+                break;
+            case 'deepsea':
+                bodyBackgroundColor = '#003f5c'; // sea-like bluish color
+                textColor = '#003f5c'; // deep sea color
+                buttonTextColor = '#003f5c'; // deep sea color
+                borderColor = '#003f5c'; // deep sea color
+                glowColor = '#00BFFF'; // glowing blue for contrast
+                break;
+            case 'immortal':
+                bodyBackgroundColor = '#000';
+                textColor = '#FF0000'; // red
+                buttonTextColor = '#FF0000'; // red
+                borderColor = '#FF0000'; // red
+                glowColor = 'rgba(255, 0, 0, 1)'; // red glow
+                break;
+            case 'berrybliss':
+                bodyBackgroundColor = '#000'; 
+                textColor = '#FFB3C3'; // light red for text
+                buttonTextColor = '#FFB3C3'; // light red for button text
+                borderColor = '#FFB3C3'; // light red outline
+                glowColor = 'rgba(255, 0, 0, 1)'; // red glow
+                break;
+            case 'original':
+                bodyBackgroundColor = '#000';
+                textColor = '#00BFFF'; 
+                buttonTextColor = '#00BFFF'; // light blue for button text
+                borderColor = '#00BFFF'; // light blue outline
+                glowColor = 'rgba(0, 191, 255, 1)'; // light blue glow
+                break;
+            default:
+                bodyBackgroundColor = '#000';
+                textColor = '#00BFFF'; 
+                buttonTextColor = '#00BFFF'; // light blue for button text
+                borderColor = '#00BFFF'; // light blue outline
+                glowColor = 'rgba(0, 191, 255, 1)'; // light blue glow
+                break;
+        }
+
+        // Apply styles to the body
+        document.body.style.backgroundColor = bodyBackgroundColor;
+        document.body.style.color = textColor;
+
+        // Update the button and textbox styles
+        document.querySelectorAll('.button, .theme-option').forEach(button => {
+            button.style.backgroundColor = 'black'; // Keep black background
+            button.style.color = buttonTextColor; // Theme-specific text color
+            button.style.borderColor = borderColor; // Theme-specific border color
+            button.style.boxShadow = `0 0 20px ${glowColor}`; // Theme-specific glow effect
+        });
+
+        // Update textbox color and border
+        document.getElementById('tabName').style.borderColor = borderColor;
+        document.getElementById('tabName').style.color = textColor;
+
+        // Update static text colors
+        const sectionsToColor = [
+            {selector: '#general h3', color: textColor},
+            {selector: '#general label', color: textColor},
+            {selector: '#applyButton', color: buttonTextColor},
+            {selector: '#themes h3', color: textColor},
+            {selector: '#home h2', color: textColor},
+            {selector: '#home p', color: textColor},
+            {selector: '#games h2', color: textColor},
+            {selector: '#proxys h2', color: textColor},
+            {selector: '#yap h2', color: textColor},
+            {selector: '#credits h2', color: textColor},
+            {selector: '#credits p', color: textColor},
+        ];
+
+        sectionsToColor.forEach(({selector, color}) => {
+            document.querySelector(selector).style.color = color;
+        });
+        
+        document.getElementById('settingsCurrentTheme').innerText = `Current theme: ${theme.charAt(0).toUpperCase() + theme.slice(1)}`;
+    }
+
+</script>
+</body>
+</html>
