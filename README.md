@@ -15,4 +15,5 @@ To create your website using the Universal Proxy source code, please follow the 
    `https://yourwebsitename.w3spaces.com`  
    Replace "yourwebsitename" with the actual name you chose for your website.
 
-By following these steps, you will successfully set up your website using the Universal Proxy source code. If you require further assistance, please feel free to reach out for help.
+Remember to delete everything everything in the `index.html` file before pasting the universal source code in `index.html`.
+By following these steps, you will successfully set up your website using the Universal Proxy source code.
