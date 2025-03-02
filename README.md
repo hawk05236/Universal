@@ -3,17 +3,15 @@
 
 To create your website using the Universal Proxy source code, please follow the steps outlined below:
 
-1. **Access W3Schools Spaces**: Visit [W3Schools Spaces](https://spaces.w3schools.com/). You will need to sign in or create an account if you do not have one.
+1. **Access W3Schools Spaces**: Visit [Vercel](https://vercel.com/). You will need to sign in or create an account if you do not have one.
 
-2. **Create a New Space**: After signing in, you can create a new space for your website.
+2. **Create a New Project**: After signing in, you can create a new Project.
 
-3. **Prepare Your Space**: Once your space is created, delete all default files except for `index.html`.
+3. **Prepare Your Project**: Once your Project is created, add universal to your Git Repository section.
 
-4. **Insert the Source Code**: Paste the entire Universal Proxy source code into the `index.html` file.
+4. **Project name**: the sub domain (the beginning of your website) you can change to `whatever you want.`
 
-5. **View Your Website**: You can access your website by navigating to:  
-   `https://yourwebsitename.w3spaces.com`  
-   Replace "yourwebsitename" with the actual name you chose for your website.
-
+5. **View Your Website**: after deploying ouy website, click on the image of universal that appears on your screen, and there you go!
 Remember to delete everything everything in the `index.html` file before pasting the universal source code in `index.html`.
 By following these steps, you will successfully set up your website using the Universal Proxy source code.
+`notice: watch the youtube video to understand how to do it better, coming up soon.`
