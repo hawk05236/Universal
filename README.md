@@ -3,7 +3,7 @@
 
 To create your website using the Universal Proxy source code, please follow the steps outlined below:
 
-1. **Access W3Schools Spaces**: Visit [Vercel](https://vercel.com/). You will need to sign in or create an account if you do not have one.
+1. **Access Vercel**: Visit [Vercel](https://vercel.com/). You will need to sign in or create an account if you do not have one.
 
 2. **Create a New Project**: After signing in, you can create a new Project.
 
