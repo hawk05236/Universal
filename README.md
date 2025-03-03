@@ -11,6 +11,6 @@ To create your website using the Universal Proxy source code, please follow the 
 
 4. **Project name**: the sub domain (the beginning of your website) you can change to `whatever you want.`
 
-5. **View Your Website**: after deploying ouy website, click on the image of universal that appears on your screen, and there you go!
+5. **View Your Website**: after deploying your website, click on the image of universal that appears on your screen, and there you go!
 By following these steps, you will successfully set up your website using the Universal Proxy source code.
-`alternative website to use is static.run! I would import cookie clicker to static.run,  but it detects cookie clicker as phishing for some reason either though the files are verified :(`
+`alternative website to use is static.run! I would import cookie clicker to static.run, but it detects cookie clicker as phishing for some reason either though the files are verified :(`
