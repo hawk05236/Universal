@@ -2,4 +2,7 @@
 You do not need to import the tutorial.js script into your website. You ARE required to import the html file. And it is  suggested you import the CrashReporter.js so that there are no errors or bugs with it. Remember, if there are still bugs and errors, it would be nice for you to report it to me, lucasbiltruvrekt@gmail.com  |  github says that this website is mostly html. But that is a lie.
 The html file has html, css, and javascript all packed into it. It's more like 40% html, 50% javascript, 50% css.
 
+
+another note: static.run works better then w3, click upload folder if you extracted the zip file(reccommend you extract it), thanks :D
+
 that is all i had to say. -H
