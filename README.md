@@ -13,4 +13,4 @@ To create your website using the Universal Proxy source code, please follow the 
 
 5. **View Your Website**: after deploying ouy website, click on the image of universal that appears on your screen, and there you go!
 By following these steps, you will successfully set up your website using the Universal Proxy source code.
-`notice: watch the youtube video to understand how to do it better, coming up soon.`
+`alternative website to use is static.run! I would import cookie clicker to static.run,  but it detects cookie clicker as phishing for some reason either though the files are verified :(`
