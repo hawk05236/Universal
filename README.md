@@ -7,7 +7,7 @@ To create your website using the Universal Proxy source code, please follow the 
 
 2. **Create a New Project**: After signing in, you can create a new Project.
 
-3. **Prepare Your Project**: Once your Project is created, add universal to your Git Repository section.
+3. **Prepare Your Project**: Once your Project is created, fork universal to your Git Repository section, and then add to your project.
 
 4. **Project name**: the sub domain (the beginning of your website) you can change to `whatever you want.`
 
