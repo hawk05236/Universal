@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universal - Games</title>
+    <link rel="icon" type="image/x-icon" href="https://images.pexels.com/photos/87651/earth-blue-planet-globe-planet-87651.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            height: 100vh;
+            background: #000;
+            cursor: default; /* Ensure the cursor is always default */
+            color: #00BFFF;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid #00BFFF;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav button {
+            margin: 0 8px;
+            padding: 12px 30px;
+            background-color: black; /* Black background for all buttons */
+            color: #00BFFF; /* Default button text color */
+            border: 2px solid #00BFFF; /* Default border color */
+            border-radius: 30px;
+            cursor: pointer; /* Pointer cursor */
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        nav button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.5);
+        }
+
+        .button-container {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: black;
+            color: #00BFFF;
+            border: 2px solid #00BFFF;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            cursor: pointer; /* Pointer cursor */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin: 10px;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(0, 191, 255, 0.8);
+        }
+
+        .section {
+            padding: 50px 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="text-glow">Universal - Games</h1>
+    <nav>
+        <button class="text-glow" onclick="window.location.href='/'">Home</button> <!-- Link back to main page -->
+        <button class="text-glow" onclick="window.location.href='/'">Back to Universal</button>
+    </nav>
+</header>
+
+<div class="section">
+    <h2 class="text-glow">Games</h2>
+    <div class="button-container">
+        <button class="button" onclick="window.location.href='/cookieclicker'">Cookie Clicker</button> <!-- Cookie Clicker button -->
+        <button class="button" onclick="window.location.href='/2048'">2048</button> <!-- 2048 button -->
+        <button class="button" onclick="window.location.href='/flappybird'">Flappy Bird</button> <!-- Flappy Bird button -->
+        <button class="button" onclick="window.location.href='/slope'">Slope</button> <!-- Slope button -->
+        <button class="button" onclick="window.location.href='/penguino'">Penguino</button> <!-- Penguino button -->
+        <button class="button" onclick="window.location.href='/backrooms'">Backrooms</button> <!-- Backrooms button -->
+<button class="button" onclick="window.location.href='retrobowl'">Retro Bowl</button>
+    </div>
+</div>
+
+</body>
+</html>
